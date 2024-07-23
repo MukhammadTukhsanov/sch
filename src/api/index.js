@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const url = 'http://192.168.100.23:8200/';
+export const url = 'http://192.168.100.23:7878/';
 // export const url = 'http://35.184.23.4/';
 
 // export const create = async (data) => {
