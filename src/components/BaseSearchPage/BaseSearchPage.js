@@ -18,6 +18,8 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [toArticle, setToArticle] = useState('');
+  const [toMA, setToMA] = useState('');
+  const [toProductionsnummer, setToProductionsnummer] = useState('');
 
   // partnr
   // const [timeFormatSelect, setTimeFormatSelect] = useState('')
@@ -47,14 +49,21 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
   const handleToArticle = (e) => {
     setToArticle(e.target.value);
   };
+  const handleToMA = (e) => {
+    setToMA(e.target.value);
+  }
+  const handleProductionsnummer = (e) => {
+    setToProductionsnummer(e.target.value);
+  }
 
 
 
   const handleSubmit = () => {
-    if (fromDate || toDate || toArticle || statusSelect || maSelect || machineSelect || toArticle ) {
-      fetchSearch(fromDate, toDate, toArticle, statusSelect, maSelect, machineSelect).then(
+    if (fromDate || toDate || toArticle || statusSelect || toMA || toArticle ) {
+      fetchSearch(fromDate, toDate, toArticle, statusSelect, toMA, toProductionsnummer).then(
         (res) => {
-          setSearchData(res?.data?.items);
+          console.log('res', res);
+          setSearchData(res?.data);
         }
       );
     } else {
@@ -78,18 +87,18 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
     setSearchData([]);
   };
 
-  useEffect(() => {
-    if (!(fromDate || toDate || toArticle || statusSelect || maSelect || machineSelect)) {
-      setSearchData([]);
-    }
-  }, [fromDate, toDate, toArticle , statusSelect, maSelect, machineSelect]);
+  // useEffect(() => {
+  //   if (!(fromDate || toDate || toArticle || statusSelect || maSelect || machineSelect)) {
+  //     setSearchData([]);
+  //   }
+  // }, [fromDate, toDate, toArticle , statusSelect, maSelect, machineSelect]);
 
-  useEffect(() => {
-    fetchGetMa().then((res) => {
-      console.log('res', res);
-      setMaFilter(res.data.ma);
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetchGetMa().then((res) => {
+  //     console.log('res', res);
+  //     setMaFilter(res.data.ma);
+  //   });
+  // }, []);
 
   return (
     <div>
@@ -165,7 +174,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                       darkMode ? 'white' : ''
                     }`}
                   >
-                    Status:
+                    Notiz:
                   </p>
                   <BaseSelect
                     select={(e) => handleSelectStatus(e)}
@@ -183,11 +192,17 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                   >
                     MA:
                   </p>
-                  <BaseSelect
+                  <Form.Control
+                    onChange={(e) => handleToMA(e)}
+                    size="sm"
+                    className="ms-2"
+                    type="text"
+                  />
+                  {/* <BaseSelect
                     select={(e) => handleSelectMa(e)}
                     size="sm"
                     options={maFilter}
-                  />
+                  /> */}
                 </div>
               </td>
               <td className="search_page-text">
@@ -197,13 +212,19 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                       darkMode ? 'white' : ''
                     }`}
                   >
-                    Ausstattung:
+                    Productionsnummer:
                   </p>
-                  <BaseSelect
+                  <Form.Control
+                    onChange={(e) => handleProductionsnummer(e)}
+                    size="sm"
+                    className="ms-2 w-50"
+                    type="text"
+                  />
+                  {/* <BaseSelect
                     select={(e) => handleSelectMachine(e)}
                     size="sm"
                     options={machineFilter}
-                  />
+                  /> */}
                 </div>
               </td>
             </tr>

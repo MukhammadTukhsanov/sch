@@ -15,7 +15,7 @@ function BaseTabs({ darkMode }) {
     const onlineDate = moment().format('DD.MM.YYYY // HH:mm')
 
     const [tableData, setTableData] = useState([])
-    const [key, setKey] = useState('ubersicht');
+    const [key, setKey] = useState('suche');
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(10)
     const [datLength, setDatLength] = useState([])
@@ -41,12 +41,12 @@ function BaseTabs({ darkMode }) {
     }
 
 
-    useEffect(() => {
-        fetchGet(page).then(res => {
-            setTableData(res?.data?.items)
-            setDatLength(res?.data?.length)
-        })
-    }, [page])
+    // useEffect(() => {
+    //     fetchGet(page).then(res => {
+    //         setTableData(res?.data?.items)
+    //         setDatLength(res?.data?.length)
+    //     })
+    // }, [page])
 
     useEffect(() => {
         setTotalPage(Math.ceil(datLength / limit))
@@ -61,10 +61,10 @@ function BaseTabs({ darkMode }) {
                 onSelect={(k) => setKey(k)}
                 className={`bg_tab_header ${darkMode ? 'bg-dark border border-white' : ''}`}
             >
-                <Tab tabClassName={`fs-5 fw-bold border-0 rounded-0 text-${key === 'neu' ? 'dark' : darkMode ? 'white' : 'dark'}`} eventKey="neu" title="+ NEU">
+                {/* <Tab tabClassName={`fs-5 fw-bold border-0 rounded-0 text-${key === 'neu' ? 'dark' : darkMode ? 'white' : 'dark'}`} eventKey="neu" title="+ NEU">
                     <BaseFormCreate darkMode={darkMode} page={page} setTableData={setTableData} setKey={setKey} />
-                </Tab>
-                <Tab tabClassName={`fs-5 fw-bold border-0 rounded-0 text-${key === 'ubersicht' ? 'dark' : darkMode ? 'white' : 'dark'}`} eventKey="ubersicht" title="Übersicht">
+                </Tab> */}
+                {/* <Tab tabClassName={`fs-5 fw-bold border-0 rounded-0 text-${key === 'ubersicht' ? 'dark' : darkMode ? 'white' : 'dark'}`} eventKey="ubersicht" title="Übersicht">
                     <BaseTable
                         darkMode={darkMode}
                         data={tableData}
@@ -84,13 +84,21 @@ function BaseTabs({ darkMode }) {
                             onPageChange={handlePageChange}
                         />
                     </div>
-                </Tab>
+                </Tab> */}
                 <Tab tabClassName={`fs-5 fw-bold border-0 rounded-0 text-${key === 'suche' ? 'dark' : darkMode ? 'white' : 'dark'}`} eventKey="suche" title="Suche">
                     <BaseSearchPage
                         darkMode={darkMode}
                         setTableData={setTableData}
                         setDatLength={setDatLength}
                     />
+                    {/* <BaseTable
+                        darkMode={darkMode}
+                        data={tableData}
+                        page={page}
+                        setTableData={setTableData}
+                        setDatLength={setDatLength}
+                        isSort={true}
+                    /> */}
                 </Tab>
             </Tabs>
             <span className={`d-none d-md-block position-absolute top-0 end-0 translate-middle-x d-flex align-items-center mt-2 text-${darkMode ? 'white' : 'dark'}`} >{onlineDate}</span>

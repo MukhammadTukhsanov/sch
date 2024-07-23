@@ -68,26 +68,26 @@ const BaseFormCreate = ({ darkMode, page, setTableData, setKey }) => {
         // setPartNumber(data[1]);
 
         setShow(true)
-        create(formData).then(res => {
-            if (res.status === 201) {
-                setEmployeeShortcut('')
-                setMaschine('')
-                setStatus('')
-                setNote('')
-                setFiles('')
-                setValueFile('')
-                setArtikelnr('')
-                fetchGet(page).then((res) => setTableData(res.data.items))
-                setIsAdd(true)
-                setInterval(() => {
-                    setIsAdd(false)
-                }, 3000)
-                setShow(false)
-                setKey('ubersicht')
-                setPartName('')
-                setPartNumber('')
-            }
-        })
+        // create(formData).then(res => {
+        //     if (res.status === 201) {
+        //         setEmployeeShortcut('')
+        //         setMaschine('')
+        //         setStatus('')
+        //         setNote('')
+        //         setFiles('')
+        //         setValueFile('')
+        //         setArtikelnr('')
+        //         // fetchGet(page).then((res) => setTableData(res.data.items))
+        //         setIsAdd(true)
+        //         setInterval(() => {
+        //             setIsAdd(false)
+        //         }, 3000)
+        //         setShow(false)
+        //         setKey('ubersicht')
+        //         setPartName('')
+        //         setPartNumber('')
+        //     }
+        // })
     }
 
 

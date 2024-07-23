@@ -14,7 +14,7 @@ import {
 import './BaseTable.css';
 
 const BaseTable = ({
-  // data,
+  data,
   darkMode,
   page,
   setDatLength,
@@ -38,28 +38,28 @@ const BaseTable = ({
 
   const noteClass = 'text-success my-2';
 
-  const statusColor = (status) => {
-    if (status === 'info') {
-      return '';
-    } else if (status === 'anweisung') {
-      return 'warning';
-    } else {
-      return 'danger';
-    }
-  };
+  // const statusColor = (status) => {
+  //   if (status === 'info') {
+  //     return '';
+  //   } else if (status === 'anweisung') {
+  //     return 'warning';
+  //   } else {
+  //     return 'danger';
+  //   }
+  // };
 
-  const data = [
-    {
-      date: '2021-09-01T07:00:00.000Z',
-      status: 'info',
-      partnr: '123456',
-      partname: 'Test',
-      ma: 'T s',
-      machine: ['Test'],
-      notes: [{ note: 'Test' }],
-      image: 'test.jpg',
-    },
-  ]
+  // const data = [
+  //   {
+  //     date: '2021-09-01T07:00:00.000Z',
+  //     status: 'info',
+  //     partnr: '123456',
+  //     partname: 'Test',
+  //     ma: 'T s',
+  //     machine: ['Test'],
+  //     notes: [{ note: 'Test' }],
+  //     image: 'test.jpg',
+  //   },
+  // ]
 
   const handleClose = (str) => {
     setShow(false);
@@ -67,25 +67,25 @@ const BaseTable = ({
       if (noteComment === '' || noteComment.length < 3) {
         return;
       }
-      const FormData = require('form-data');
-      const noteData = new FormData();
-      noteData.append('notes', noteComment);
-      updated(itemId, noteData).then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          setNoteComment('');
-          console.log(res.data)
-          fetchGet(page).then((res) => {
-            console.log(res)
-            setTableData(res.data.items);
-            setDatLength(res.data.length);
-          });
-          fetchSearch(...searchFetch).then((res) => {
-            console.log(res.data)
-            setSearchData(res?.data?.items);
-          });
-        }
-      });
+      // const FormData = require('form-data');
+      // const noteData = new FormData();
+      // noteData.append('notes', noteComment);
+      // updated(itemId, noteData).then((res) => {
+      //   console.log(res);
+      //   if (res.status === 200) {
+      //     setNoteComment('');
+      //     console.log(res.data)
+      //     fetchGet(page).then((res) => {
+      //       console.log(res)
+      //       setTableData(res.data.items);
+      //       setDatLength(res.data.length);
+      //     });
+      //     fetchSearch(...searchFetch).then((res) => {
+      //       console.log(res.data)
+      //       setSearchData(res?.data?.items);
+      //     });
+      //   }
+      // });
     } else {
       setNoteComment('');
     }
@@ -96,7 +96,7 @@ const BaseTable = ({
     setItemId(id);
     setComments(com);
   };
-
+// 
   const dateDay = (date) => {
     if (moment(date).format('dddd') === 'Monday') return 'Mo';
     if (moment(date).format('dddd') === 'Tuesday') return 'Di';
@@ -214,7 +214,7 @@ const BaseTable = ({
                       iconPosDatum ? 'icon_position' : ''
                     }`}
                   >
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -226,7 +226,7 @@ const BaseTable = ({
                         fillRule="evenodd"
                         d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
                       />
-                    </svg>
+                    </svg> */}
                   </span>
                 ) : null}
               </div>
@@ -236,12 +236,12 @@ const BaseTable = ({
                 className="d-flex align-items-center justify-content-between"
                 style={{ widows: '100%' }}
               >
-                <span>Uhrzeit</span>
+                <span>Zeit</span>
               </div>
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Schicht</span>
+                <span>Maschinen name</span>
                 {isSort ? (
                   <span
                     role="button"
@@ -250,7 +250,7 @@ const BaseTable = ({
                       iconPosSchicht ? 'icon_position' : ''
                     }`}
                   >
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -262,14 +262,14 @@ const BaseTable = ({
                         fillRule="evenodd"
                         d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
                       />
-                    </svg>
+                    </svg> */}
                   </span>
                 ) : null}
               </div>
             </th>
             <th width="100">
               <div className="d-flex align-items-center justify-content-between">
-                <span>Status</span>
+                <span>WZ gerüstet</span>
                 {isSort ? (
                   <span
                     role="button"
@@ -278,7 +278,7 @@ const BaseTable = ({
                       iconPosStatus ? 'icon_position' : ''
                     }`}
                   >
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -290,14 +290,14 @@ const BaseTable = ({
                         fillRule="evenodd"
                         d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
                       />
-                    </svg>
+                    </svg> */}
                   </span>
                 ) : null}
               </div>
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Artikelnr</span>
+                <span>ProduktionsNr</span>
                 {isSort ? (
                   <span
                     role="button"
@@ -306,7 +306,7 @@ const BaseTable = ({
                       iconPosPartnr ? 'icon_position' : ''
                     }`}
                   >
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -318,14 +318,14 @@ const BaseTable = ({
                         fillRule="evenodd"
                         d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
                       />
-                    </svg>
+                    </svg> */}
                   </span>
                 ) : null}
               </div>
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Artikelname</span>
+                <span>Cavity</span>
                 {isSort ? (
                   <span
                     role="button"
@@ -334,7 +334,7 @@ const BaseTable = ({
                       iconPosPartname ? 'icon_position' : ''
                     }`}
                   >
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -346,24 +346,24 @@ const BaseTable = ({
                         fillRule="evenodd"
                         d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
                       />
-                    </svg>
+                    </svg> */}
                   </span>
                 ) : null}
               </div>
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>MA</span>
+                <span>Cycletime</span>
               </div>
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Ausstattung</span>
+                <span>PartStatus</span>
               </div>
             </th>
             <th className="width-not">Notiz</th>
-            <th>Feedback</th>
-            <th>Bild</th>
+            <th>Operating Hours</th>
+            {/* <th>German</th> */}
           </tr>
         </thead>
         <tbody className={darkMode ? 'bg_tbody-dark' : 'bg_tbody'}>
@@ -372,37 +372,52 @@ const BaseTable = ({
               <Fragment key={item?.date + i}>
                 <tr className={i % 2 === 0 ? 'bg_table_body' : ''}>
                   <td style={{ width: '140px' }}>
-                    {dateDay(item.date)}, {onDate(item.date)}
+                    {dateDay(item.createdAt)}, 
+                    {onDate(item.createdAt)}
                   </td>
-                  <td>{onHour(item.date)}</td>
-                  <td>{timeFormat(onHour(item.date))}</td>
-		  <td className={`bg-${statusColor(item?.status)}`} style={{whiteSpace: 'pre-line', minWidth: '130px'}}>
-                    {onToUpperCase(item.status)}
-                  </td>
-                  <td className='' style={{maxWidth:'30ch', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
-			{item.partnr && item.partname != 'undefined' && `${String(item.partnr).slice(0, 16)}`}
-                  </td>
-
-                  <td className='' style={{maxWidth:'30ch', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
-			{item.partname && item.partname != 'undefined' && `${String(item.partname).slice(0, 39)}`}
-                  </td>
-
-                  <td>{item.ma.toUpperCase().replace(/\s+/g, '')}</td>
                   <td>
-                    {item.machine.map((mach, i) => {
+                    {onHour(item.createdAt)}
+                  </td>
+                  <td>{item.machineQrCode}</td>
+                  {/* <td>{timeFormat(onHour(item.createdAt))}</td> */}
+		  {/* <td className={`bg-${statusColor(item?.status)}`} style={{whiteSpace: 'pre-line', minWidth: '130px'}}>
+                    {onToUpperCase(item.status)}
+                  </td> */}
+                  <td className='' style={{maxWidth:'30ch', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
+                    {item.toolMounted ? 'Ja' : 'Nein'}
+			{/* {item.partnr && item.partname != 'undefined' && `${String(item.partnr).slice(0, 16)}`} */}
+                  </td>
+
+                  <td className='' style={{maxWidth:'30ch', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
+			{/* {item.partname && item.partname != 'undefined' && `${String(item.partname).slice(0, 39)}`} */}
+                  {item.barcodeProductionNo}
+                  </td>
+
+                  {/* <td>{item.ma.toUpperCase().replace(/\s+/g, '')}</td> */}
+                  <td>
+                    {/* {item.ma} */}
+                    {item.cavity}
+                    </td>
+                  <td>
+                    {item.cycleTime}
+                    {/* {item.machine.map((mach, i) => {
                       return (
                         <span className="mx-1 fs-5" key={mach + i}>
                           <Badge bg="secondary">{mach}</Badge>
                         </span>
                       );
-                    })}
+                    })} */}
                   </td>
                   {/* item?.notes?.length - 1 */}
-                  <td className="width-not">{item?.notes[0]?.note}</td>
+                  {/* <td className="width-not">{item?.notes[0]?.note}</td> */}
+                  <td className="width-not">
+                    {/* {item?.note} */}
+                    {item?.partStatus ? "Ok" : 'Nicht Ok'}
+                  </td>
                   <td>
                     <div className="d-flex flex-row justify-content-center">
                       <span
-                        onClick={() => handleShow(item?.id, item.notes)}
+                        onClick={() => handleShow(item?.id, item.note)}
                         className={`cursor_pointer mx-2 text-${
                           darkMode ? 'white' : 'dark'
                         }`}
@@ -419,12 +434,13 @@ const BaseTable = ({
                           <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8zm0 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
                         </svg>
                       </span>
-                      ({item?.notes?.length})
+                      {/* ({item?.note.length}) */}
                     </div>
                   </td>
                   <td className="">
                     <div className="d-flex justify-content-center align-items-center">
-                      {item?.image ? (
+                      {item?.operatingHours}
+                      {/* {item?.image ? (
                         <a
                           className={darkMode ? 'text-white' : 'text-dark'}
                           href={url + item.image}
@@ -445,7 +461,7 @@ const BaseTable = ({
                         </a>
                       ) : (
                         '-'
-                      )}
+                      )} */}
                     </div>
                   </td>
                 </tr>
@@ -461,23 +477,21 @@ const BaseTable = ({
         <Modal.Body>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <ul className="ul_style">
-              {comments.map((item, i) => {
-                return (
-                  <li
-                    key={item.created_at + i}
-                    className={i % 2 === 0 ? noteClass : ''}
-                  >
-                    <Badge className="ms-2 me-2 py-2 px-2" bg="secondary">
-                      {moment(item.created_at).format('DD.MM.YYYY, HH:mm')}
-                    </Badge>
-                    {item.note}
-                  </li>
-                );
-              })}
+              <li
+                // key={item.created_at + i}
+                // className={i % 2 === 0 ? noteClass : ''}
+              >
+                <Badge className="ms-2 me-2 py-2 px-2" bg="secondary">
+                  {/* {moment(item.created_at).format('DD.MM.YYYY, HH:mm')} */}
+                </Badge>
+                {/* {item.note} */}
+              </li>
+              {comments
+              }
             </ul>
           </Form.Group>
         </Modal.Body>
-        <Modal.Title id="example-custom-modal-styling-title">
+        {/* <Modal.Title id="example-custom-modal-styling-title">
           <div className="px-4 py-2">
             <Form.Control
               placeholder="Feedback"
@@ -487,15 +501,15 @@ const BaseTable = ({
               rows={2}
             />
           </div>
-        </Modal.Title>
-        <Modal.Footer className="d-flex justify-content-center">
+        </Modal.Title> */}
+        {/* <Modal.Footer className="d-flex justify-content-center">
           <Button variant="secondary" onClick={() => handleClose('cancel')}>
             Abbruch
           </Button>
           <Button variant="primary" onClick={() => handleClose('save')}>
             Speichern
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </div>
   );
