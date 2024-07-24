@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import BaseTabs from './components/BaseTabs/BaseTabs';
-import logo from './ebook-svgrepo-com_wb.svg'
 import logoRight from './KTB_Logo_rigth.png'
 import logoWriteRight from './KTB_Logo_white_right.png'
 import './App.css';
@@ -20,8 +19,13 @@ function App() {
         <header>
           <div className='pb-2 pt-3 d-flex align-items-center justify-content-between' >
             <div className='d-flex align-items-center' >
-              <img className={isDarkMode ? 'invert' : ''} width={35} height={35} src={logo} alt='logo' />
-              <h1 className={`ms-2 mb-0 fs-3 text-${isDarkMode ? 'white' : 'dark'}`} >Archiv Schichtprokolle</h1>
+            <img
+          style={{rotate: "90deg"}}
+          width={45}
+          height={45}
+          alt='logo'
+          src={require("./img/bar-chart.png")} />
+              <h1 className={`ms-2 mb-0 fs-3 text-${isDarkMode ? 'white' : 'dark'}`} >Schichtprokolle</h1>
             </div>
             <div className='d-flex justify-content-evenly align-items-center' >
               <img width={100} height={35} src={isDarkMode ? logoWriteRight : logoRight} alt='logo' />

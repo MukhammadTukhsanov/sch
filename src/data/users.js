@@ -1,6 +1,6 @@
 
 export const machine = [
-    { name: '_Keine_', id: 0 },
+    // { name: '_Keine_', id: 0 },
     { name: 'E 120 - 1', id: 1 },
     { name: 'E 35 - 1', id: 2 },
     { name: 'E 45 - 1', id: 3 },
@@ -19,10 +19,10 @@ export const machine = [
     { name: 'KM 420 - 1', id: 16 },
     { name: 'KM 50 - 1', id: 17 },
     { name: 'KM 80 - 1', id: 18 },
-    { name: '_Peripherie_', id: 19 },
-    { name: '_Trocknung_', id: 20 },
-    { name: '_Kuehlanlage_', id: 21 },
-    { name: '_Kompressor_', id: 22 }
+    // { name: '_Peripherie_', id: 19 },
+    // { name: '_Trocknung_', id: 20 },
+    // { name: '_Kuehlanlage_', id: 21 },
+    // { name: '_Kompressor_', id: 22 }
 
     // { name: '_Keine_', id: 1 },
     // { name: 'E 35 - 1', id: 2 },
