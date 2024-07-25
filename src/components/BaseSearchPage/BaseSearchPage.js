@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Table, Form } from 'react-bootstrap';
+import { Table, Form, Pagination } from 'react-bootstrap';
 import BaseSelect from '../BaseSelect/BaseSelect';
 import { machine, statusData } from '../../data/users';
 import { fetchGetMa, fetchSearch } from '../../api/index';
 import BaseTable from '../BaseTable/BaseTable';
 
 import './BaseSearchPage.css';
+import BasePagination from '../BasePagination/BasePagination';
 
 // const shiftFilter = ['F1', 'S2', 'N3']
 const statusFilter = statusData;
@@ -55,6 +56,8 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
   const handleProductionsnummer = (e) => {
     setToProductionsnummer(e.target.value);
   }
+
+  const [activePage, setActivePage] = useState(0)
 
 
 
@@ -141,9 +144,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                 </div>
               </td>
               <td>
-                <div className="d-flex align-items-center date_picker
-                justify-content-between
-                ">
+                <div className="d-flex align-items-center date_picker justify-content-between">
                   <p
                     className={`fs-5 my-0 px-2 py-1 search_page-text fw-bold bg-transparent text-${
                       darkMode ? 'white' : ''
@@ -170,8 +171,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
 
               <td className="search_page-text">
 
-                <div className="d-flex align-items-center
-                justify-content-between">
+                <div className="d-flex align-items-center justify-content-between">
                   <p
                     className={`fs-5 my-0 me-2 px-2 py-1 fw-bold text-${
                       darkMode ? 'white' : ''
@@ -249,7 +249,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
           darkMode={darkMode}
           setDatLength={setDatLength}
           setTableData={setTableData}
-          data={searchData}
+          data={searchData.slice(activePage, activePage + 11)}
           setSearchData={setSearchData}
           searchFetch={[
             fromDate,
@@ -261,27 +261,53 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
           ]}
         />
       ) : null}
-      <div className="d-flex justify-content-end">
-        <button
-          onClick={resetValues}
-          className={`mx-3 fw-bold ${
-            darkMode ? 'reset_btn-dark' : 'reset_btn'
-          }`}
-          disabled={
-            !(fromDate || toDate  || toArticle || statusSelect || maSelect || machineSelect)
-          }
-        >
-          Suche zurücksetzen
-        </button>
-        <button
-          onClick={handleSubmit}
-          className={`fw-bold ${darkMode ? 'search_btn-dark' : 'search_btn'}`}
-          disabled={
-            !(fromDate || toDate || toArticle || statusSelect || maSelect || machineSelect)
-          }
-        >
-          Suchen..
-        </button>
+      <div className="d-flex justify-content-between mb-4">
+        {/* Pagination for table */}
+        <nav aria-label="...">
+          <ul class="pagination">
+            <li class={`page-item ${activePage > 0 ? "" : "disabled"}`}>
+              <a class="page-link" onClick={() => setActivePage(activePage - 10)} tabindex="-1">Previous</a>
+            </li>
+            {/* <li class="page-item"><a class="page-link" href="#">1</a></li> */}
+            {/* <li class="page-item active">
+              <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+            </li> */}
+            {/* <li class="page-item"><a class="page-link" href="#">3</a></li> */}
+            <li class={`page-item ${Math.floor(searchData.length / 10) * 10 <= activePage ? 'disabled' : '' } `}>
+              <a class="page-link" onClick={
+                () => {
+                  console.log("page", Math.floor(searchData.length / 10) * 10)
+                  console.log("activePage", activePage)
+                  return setActivePage(activePage + 10)
+                }
+              }>Next</a>
+            </li>
+          </ul>
+        </nav>
+
+
+        <div className="d-flex justify-content-end mb-4">
+          <button
+            onClick={resetValues}
+            className={`mx-3 fw-bold ${
+              darkMode ? 'reset_btn-dark' : 'reset_btn'
+            }`}
+            disabled={
+              !(fromDate || toDate  || toArticle || statusSelect || maSelect || machineSelect)
+            }
+          >
+            Suche zurücksetzen
+          </button>
+          <button
+            onClick={handleSubmit}
+            className={`fw-bold ${darkMode ? 'search_btn-dark' : 'search_btn'}`}
+            disabled={
+              !(fromDate || toDate || toArticle || statusSelect || maSelect || machineSelect)
+            }
+          >
+            Suchen..
+          </button>
+        </div>
       </div>
     </div>
   );
