@@ -264,15 +264,11 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
       <div className="d-flex justify-content-between mb-4">
         {/* Pagination for table */}
         <nav aria-label="...">
+          {searchData.length > 0 ?
           <ul class="pagination">
             <li class={`page-item ${activePage > 0 ? "" : "disabled"}`}>
-              <a class="page-link" onClick={() => setActivePage(activePage - 10)} tabindex="-1">Previous</a>
+              <a class="page-link" onClick={() => setActivePage(activePage - 10)} tabindex="-1">Zurück</a>
             </li>
-            {/* <li class="page-item"><a class="page-link" href="#">1</a></li> */}
-            {/* <li class="page-item active">
-              <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-            </li> */}
-            {/* <li class="page-item"><a class="page-link" href="#">3</a></li> */}
             <li class={`page-item ${Math.floor(searchData.length / 10) * 10 <= activePage ? 'disabled' : '' } `}>
               <a class="page-link" onClick={
                 () => {
@@ -280,9 +276,10 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                   console.log("activePage", activePage)
                   return setActivePage(activePage + 10)
                 }
-              }>Next</a>
+              }>Vor</a>
             </li>
-          </ul>
+          </ul>: null
+          }
         </nav>
 
 
