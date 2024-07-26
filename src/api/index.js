@@ -27,7 +27,7 @@ export const fetchSearch = async (fromDate, toDate, toArticle, status, ma, machi
   console.log('ma', ma);
   console.log('machine', machine);
  
-  return axios.get(`${url}/dash/api/search`, {
+  return axios.get(`${url}/api/search`, {
     params: {
       fromDate: fromDate,
       toDate: toDate,
