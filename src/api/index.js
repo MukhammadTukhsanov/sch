@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// export const url = 'http://192.168.100.23:7878/';
-export const url = 'http://35.184.23.4/';
+export const url = 'http://192.168.100.23:7878/';
+// export const url = 'http://35.184.23.4/';
 
 // export const create = async (data) => {
 //   return await axios.post(url + 'api/items/', data).then((res) => {
