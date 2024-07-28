@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const url = 'http://192.168.100.23:7878/';
+export const url = 'http://192.168.100.23:7878';
 // export const url = 'http://35.184.23.4/';
 
 // export const create = async (data) => {
@@ -17,7 +17,7 @@ export const url = 'http://192.168.100.23:7878/';
 //   return await axios.get(url + `api/items/ma`);
 // };
 export const updated = async (id, notes) => {
-  return await axios.patch(url + `api/items/${id}`, notes);
+  return await axios.patch(url + `/api/items/${id}`, notes);
 };
 export const fetchSearch = async (fromDate, toDate, toArticle, status, ma, machine) => {
   console.log('fromDate', fromDate);
@@ -48,6 +48,6 @@ export const fetchSearch = async (fromDate, toDate, toArticle, status, ma, machi
 };
 export const fetchSort = async (page = 1, sortBy, sortOrder) => {
   return await axios.get(
-    url + `api/items/?page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}`
+    url + `/api/items/?page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}`
   );
 };
