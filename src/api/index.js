@@ -19,13 +19,13 @@ export const url = 'http://192.168.100.23:7878';
 export const updated = async (id, notes) => {
   return await axios.patch(url + `/api/items/${id}`, notes);
 };
-export const fetchSearch = async (fromDate, toDate, toArticle, status, ma, machine) => {
+export const fetchSearch = async (fromDate, toDate, toArticle, status, ma, barcodeProductionNo) => {
   console.log('fromDate', fromDate);
   console.log('toDate', toDate);
   console.log('toArticle', toArticle);
   console.log('status', status);
   console.log('ma', ma);
-  console.log('machine', machine);
+  console.log('barcodeProductionNo', barcodeProductionNo);
  
   return axios.get(`${url}/api/search`, {
     params: {
@@ -34,7 +34,7 @@ export const fetchSearch = async (fromDate, toDate, toArticle, status, ma, machi
       toArticle: toArticle,
       status: status,
       ma: ma,
-      machine: machine,
+      barcodeProductionNo: barcodeProductionNo,
     },
   })
   // return await axios.get(

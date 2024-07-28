@@ -62,8 +62,8 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
 
 
   const handleSubmit = () => {
-    if (fromDate || toDate || toArticle || statusSelect || toMA || toArticle ) {
-      fetchSearch(fromDate, toDate, toArticle, statusSelect, toMA, toProductionsnummer).then(
+    if (fromDate || toDate || toArticle || statusSelect || maSelect || toArticle ) {
+      fetchSearch(fromDate, toDate, toArticle, statusSelect, maSelect, toProductionsnummer).then(
         (res) => {
           console.log('res', res);
           setSearchData(res?.data);
@@ -143,7 +143,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                   />
                 </div>
               </td>
-              <td>
+              {/* <td>
                 <div className="d-flex align-items-center date_picker justify-content-between">
                   <p
                     className={`fs-5 my-0 px-2 py-1 search_page-text fw-bold bg-transparent text-${
@@ -159,7 +159,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                     type="text"
                   />
                 </div>
-              </td>
+              </td> */}
             </tr>
             <tr>
                 {/* <td className='search_page-text' >
