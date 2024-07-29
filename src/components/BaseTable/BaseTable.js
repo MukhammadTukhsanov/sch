@@ -241,7 +241,7 @@ const BaseTable = ({
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Maschinen name</span>
+                <span>Maschinenname</span>
                 {isSort ? (
                   <span
                     role="button"
@@ -325,7 +325,7 @@ const BaseTable = ({
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Cavity</span>
+                <span>Kavität</span>
                 {isSort ? (
                   <span
                     role="button"
@@ -353,16 +353,16 @@ const BaseTable = ({
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Cycletime</span>
+                <span>Zykluszeit</span>
               </div>
             </th>
             <th>
               <div className="d-flex align-items-center justify-content-between">
-                <span>PartStatus</span>
+                <span>Artikel Status</span>
               </div>
             </th>
             <th className="width-not">Notiz</th>
-            <th>Operating Hours</th>
+            <th>Betriebsstunden</th>
             {/* <th>German</th> */}
           </tr>
         </thead>
@@ -399,7 +399,7 @@ const BaseTable = ({
                     {item.cavity}
                     </td>
                   <td>
-                    {item.cycleTime}
+                    {item.cycleTime ? item.cycleTime : '-'}
                     {/* {item.machine.map((mach, i) => {
                       return (
                         <span className="mx-1 fs-5" key={mach + i}>
@@ -419,7 +419,7 @@ const BaseTable = ({
                       <span
                         onClick={() => handleShow(item?.id, item.note)}
                         className={`cursor_pointer mx-2 text-${
-                          darkMode ? 'white' : 'dark'
+                          item.note ? 'success' : 'any'
                         }`}
                       >
                         <svg
