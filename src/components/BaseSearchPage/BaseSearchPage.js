@@ -115,13 +115,14 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                     className={`fs-5 my-0 px-2 py-1 search_page-text fw-bold bg-transparent text-${
                       darkMode ? 'white' : ''
                     }`}
+                    style={{ width: '200px' }}
                   >
                     Datum von:
                   </p>
                   <Form.Control
                     onChange={(e) => handleFromDate(e)}
                     size="sm"
-                    className="ms-2 w-50"
+                    className="ms-2 w-100"
                     type="date"
                   />
                 </div>
@@ -132,34 +133,41 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                     className={`fs-5 my-0 px-2 py-1 search_page-text fw-bold bg-transparent text-${
                       darkMode ? 'white' : ''
                     }`}
+                    style={{ width: '200px' }}
                   >
                     Datum bis:
                   </p>
                   <Form.Control
                     onChange={(e) => handleToDate(e)}
                     size="sm"
-                    className="ms-2 w-50"
+                    className="ms-2 w-100"
                     type="date"
                   />
                 </div>
               </td>
-              {/* <td>
+              <td>
                 <div className="d-flex align-items-center date_picker justify-content-between">
                   <p
                     className={`fs-5 my-0 px-2 py-1 search_page-text fw-bold bg-transparent text-${
                       darkMode ? 'white' : ''
                     }`}
+                    style={{ minWidth: '200px' }}
                   >
-                    Artikelnummer:
+                    Artikel Status:
                   </p>
-                  <Form.Control
-                    onChange={(e) => handleProductionsnummer(e)}
+                  <BaseSelect
+                    select={(e) => setStatusSelect(e)}
                     size="sm"
-                    className="ms-2 w-50 me-3"
-                    type="text"
+                    options={
+                      [
+                        'OK',
+                        'Nicht OK',
+                      ]
+                    }
+                    className="w-100"
                   />
                 </div>
-              </td> */}
+              </td>
             </tr>
             <tr>
                 {/* <td className='search_page-text' >
@@ -173,16 +181,17 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
 
                 <div className="d-flex align-items-center justify-content-between">
                   <p
-                    className={`fs-5 my-0 me-2 px-2 py-1 fw-bold text-${
+                    className={`fs-5 my-0 px-2 py-1 fw-bold text-${
                       darkMode ? 'white' : ''
                     }`}
+                    style={{ width: '200px' }}
                   >
                     Notiz:
                   </p>
                   <Form.Control
                     onChange={(e) => handleToArticle(e)}
                     size="sm"
-                    className="ms-2"
+                    className="ms-2 w-100"
                     type="text"
                   />
                   {/* <BaseSelect
@@ -198,6 +207,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                     className={`fs-5 my-0 me-2 px-2 py-1 fw-bold text-${
                       darkMode ? 'white' : ''
                     }`}
+                    style={{ width: '200px' }}
                   >
                     MA:
                   </p>
@@ -213,6 +223,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                     options={
                       machine ? machine.map((item) => item.name) : maFilter
                     }
+                    className="w-100"
                   />
                 </div>
               </td>
@@ -230,7 +241,7 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                   <Form.Control
                     onChange={(e) => handleProductionsnummer(e)}
                     size="sm"
-                    className="ms-2 w-50 me-3"
+                    className="ms-2 w-100"
                     type="text"
                   />
                   {/* <BaseSelect
@@ -298,9 +309,9 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
           <button
             onClick={handleSubmit}
             className={`fw-bold ${darkMode ? 'search_btn-dark' : 'search_btn'}`}
-            disabled={
-              !(fromDate || toDate || toArticle || statusSelect || maSelect || machineSelect)
-            }
+            // disabled={
+            //   !(fromDate || toDate || toArticle || statusSelect || maSelect || machineSelect)
+            // }
           >
             Suchen..
           </button>

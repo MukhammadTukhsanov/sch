@@ -419,7 +419,7 @@ const BaseTable = ({
                       <span
                         onClick={() => handleShow(item?.id, item.note)}
                         className={`cursor_pointer mx-2 text-${
-                          item.note ? 'success' : 'any'
+                          item.note ? 'danger' : 'any'
                         }`}
                       >
                         <svg

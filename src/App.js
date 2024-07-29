@@ -25,7 +25,7 @@ function App() {
           height={45}
           alt='logo'
           src={require("./img/bar-chart.png")} />
-              <h1 className={`ms-2 mb-0 fs-3 text-${isDarkMode ? 'white' : 'dark'}`} >Schichtprokolle</h1>
+              <h1 className={`ms-2 mb-0 fs-3 text-${isDarkMode ? 'white' : 'dark'}`} >Archiv - Schichtprotokolle</h1>
             </div>
             <div className='d-flex justify-content-evenly align-items-center' >
               <img width={100} height={35} src={isDarkMode ? logoWriteRight : logoRight} alt='logo' />
