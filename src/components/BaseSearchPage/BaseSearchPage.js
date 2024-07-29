@@ -62,16 +62,16 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
 
 
   const handleSubmit = () => {
-    if (fromDate || toDate || toArticle || statusSelect || maSelect || toArticle ) {
+    // if (fromDate || toDate || toArticle || statusSelect || maSelect || toArticle ) {
       fetchSearch(fromDate, toDate, toArticle, statusSelect, maSelect, toProductionsnummer).then(
         (res) => {
           console.log('res', res);
           setSearchData(res?.data);
         }
       );
-    } else {
-      setSearchData([]);
-    }
+    // } else {
+    //   setSearchData([]);
+    // }
   };
 
   const resetValues = () => {
