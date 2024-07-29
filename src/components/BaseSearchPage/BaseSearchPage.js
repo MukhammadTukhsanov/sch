@@ -156,13 +156,30 @@ function BaseSearchPage({ darkMode, setTableData, setDatLength }) {
                     Artikel Status:
                   </p>
                   <BaseSelect
-                    select={(e) => setStatusSelect(e)}
+                    select={(e) => setStatusSelect(
+                      [
+                        {
+                          value: '1',
+                          name: 'OK'
+                        },
+                        {
+                          value: '0',
+                          name: 'Nicht OK'
+                        }
+                      ].find((item) => item.name === e).value
+                    )}
                     size="sm"
                     options={
                       [
-                        'OK',
-                        'Nicht OK',
-                      ]
+                        {
+                          value: '1',
+                          name: 'OK'
+                        },
+                        {
+                          value: '0',
+                          name: 'Nicht OK'
+                        }
+                      ].map((item) => item.name)
                     }
                     className="w-100"
                   />
